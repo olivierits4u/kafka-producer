@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import lu.its4u.dto.Event;
+import lu.its4u.dto.Data;
 import lu.its4u.producer.kafka.KafkaProducer;
 
 @RestController
@@ -20,9 +20,18 @@ public class MainController {
 	private KafkaProducer producer;
 
 	@GetMapping(value = { "/" }, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> main(final HttpServletRequest request, @RequestParam("message") String msg, @RequestParam("count") int count) {
+	public ResponseEntity<String> main(final HttpServletRequest request, @RequestParam("message") String message,
+			@RequestParam("count") int count) {
 		for (int i = 0; i < count; i++) {
-			producer.sendMessage(new Event("event	_" + i + "_" + System.currentTimeMillis(), msg));
+			// Data data=new
+			// Data(System.currentTimeMillis(),"name_"+System.currentTimeMillis(), , msg)
+
+			Data data = new Data();
+			data.setDate(System.currentTimeMillis());
+			data.setDescription(message);
+			data.setId("" + data.getDate());
+			data.setName("name_" + data.getDate());
+			producer.sendMessage(data);
 		}
 		return new ResponseEntity<String>("Sent " + count + " messages correcly", HttpStatus.OK);
 	}

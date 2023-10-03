@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import lu.its4u.dto.Event;
+import lu.its4u.dto.Data;
 
 @Component
 
@@ -13,15 +13,15 @@ public class KafkaProducer {
 	@Value("${kafka.topic.name}")
 	private String topic;
 
-	private final KafkaTemplate<String, Event> kafkaTemplate;
+	private final KafkaTemplate<String, Data> kafkaTemplate;
 
 	@Autowired
-	public KafkaProducer(KafkaTemplate<String, Event> kafkaTemplate) {
+	public KafkaProducer(KafkaTemplate<String, Data> kafkaTemplate) {
 		this.kafkaTemplate = kafkaTemplate;
 	}
 
-	public void sendMessage(Event event) {
-		this.kafkaTemplate.send(this.topic, event);
+	public void sendMessage(Data data) {
+		this.kafkaTemplate.send(this.topic, data);
 	}
 
 }

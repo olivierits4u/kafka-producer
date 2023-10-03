@@ -1,4 +1,4 @@
-kafka.topic.name: main-topic
+kafka.topic.name: data-topic
 kafka.topic.servers: kafka-dev-kafka-bootstrap.kafka-dev:9092
 server.port: 8080
 spring.kafka.bootstrap-servers: kafka-dev-kafka-bootstrap.kafka-dev:9092
