@@ -1,0 +1,12 @@
+{
+  "name": "Data",
+  "namespace": "lu.its4u.dto",
+  "type": "record",
+  "doc": "Avro Schema for Data",
+  "fields" : [ 
+  {"name" : "id","type" : "string"}, 
+  {"name" : "date","type" : "long"}, 
+  {"name" : "name","type" : "string"}, 
+  {"name" : "description", "type" : "string"} 
+  ]
+}
