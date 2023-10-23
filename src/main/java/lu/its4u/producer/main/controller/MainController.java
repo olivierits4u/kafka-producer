@@ -31,6 +31,7 @@ public class MainController {
 			data.setDescription(message);
 			data.setId("" + data.getDate());
 			data.setName("name_" + data.getDate());
+			data.setEnvironment("env");
 			producer.sendMessage(data);
 		}
 		return new ResponseEntity<String>("Sent " + count + " messages correcly", HttpStatus.OK);
